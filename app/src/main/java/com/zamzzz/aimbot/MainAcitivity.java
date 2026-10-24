@@ -47,10 +47,7 @@ public class MainActivity extends Activity {
         tv.setTextSize(20f);
         layout.addView(tv);
 
-        // Copy file dump.cs dari assets ke penyimpanan HP
         String dumpPath = copyAssetToStorage("dump.cs");
-        
-        // Panggil fungsi init dari C++
         NativeBridge.init(dumpPath);
 
         Switch sw = new Switch(this);
@@ -62,4 +59,4 @@ public class MainActivity extends Activity {
 
         setContentView(layout);
     }
-                  }
+                        }
