@@ -59,4 +59,4 @@ public class MainActivity extends Activity {
 
         setContentView(layout);
     }
-            }
+    }
