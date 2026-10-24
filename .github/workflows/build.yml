@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK Tanpa Ampun
 
 on:
   push:
@@ -9,15 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
-      - name: Paksa Download File LFS
-        run: |
-          git lfs install
-          git lfs pull
-
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -30,11 +27,11 @@ jobs:
         run: |
           echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.1.10909125"
 
-      - name: Build APK
+      - name: Build
         run: gradle assembleRelease --no-daemon
 
-      - name: Upload APK
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: Zamzzz-Aimbot-APK
+          name: Aimbot-APK
           path: app/build/outputs/apk/release/*.apk
