@@ -11,7 +11,9 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        ndk { abiFilters 'arm64-v8a' }
+        ndk { 
+            abiFilters 'arm64-v8a' 
+        }
     }
 
     buildTypes {
@@ -28,8 +30,9 @@ android {
         }
     }
 
+    // Ini yang gw ubah biar file ZIP/CS/SO gak di-compress
     androidResources {
-        noCompress 'cs', 'so'
+        noCompress 'zip', 'tar', 'gz', 'cs', 'so'
     }
 
     compileOptions {
