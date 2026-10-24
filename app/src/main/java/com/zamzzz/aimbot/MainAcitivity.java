@@ -6,31 +6,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.graphics.Color;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 
 public class MainActivity extends Activity {
-
-    private String copyAssetToStorage(String filename) {
-        try {
-            File file = new File(getFilesDir(), filename);
-            if (!file.exists()) {
-                InputStream is = getAssets().open(filename);
-                FileOutputStream fos = new FileOutputStream(file);
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = is.read(buffer)) > 0) {
-                    fos.write(buffer, 0, length);
-                }
-                fos.close();
-                is.close();
-            }
-            return file.getAbsolutePath();
-        } catch (Exception e) {
-            return "";
-        }
-    }
 
     @Override
     protected void onCreate(Bundle b) {
@@ -42,13 +19,13 @@ public class MainActivity extends Activity {
         layout.setBackgroundColor(Color.BLACK);
 
         TextView tv = new TextView(this);
-        tv.setText("ZAMZZZ AIMBOT AUTO-PARSER");
+        tv.setText("ZAMZZZ AIMBOT (TEST BUILD)");
         tv.setTextColor(Color.RED);
         tv.setTextSize(20f);
         layout.addView(tv);
 
-        String dumpPath = copyAssetToStorage("dump.cs");
-        NativeBridge.init(dumpPath);
+        // Sementara gak manggil file dump dulu biar gak crash
+        // NativeBridge.init(""); 
 
         Switch sw = new Switch(this);
         sw.setText("AIMBOT 100% (BYPASS 6A)");
@@ -59,4 +36,4 @@ public class MainActivity extends Activity {
 
         setContentView(layout);
     }
-                        }
+            }
