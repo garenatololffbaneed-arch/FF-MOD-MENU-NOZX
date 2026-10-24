@@ -1,31 +1,27 @@
-name: Build APK Anti Gagal
-
-on:
-  push:
-    branches: [ "main", "master" ]
-  workflow_dispatch:
-
+name: Build Aimbot Final
+on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+          
+      - name: Extract Dump
+        run: |
+          cd app/src/main/assets
+          unzip -o dump.zip
+          rm dump.zip
+          
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-
+          
       - uses: android-actions/setup-android@v3
-
-      - name: Install Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: 8.2
-
-      - name: Build APK
+      
+      - name: Build
         run: gradle assembleRelease --no-daemon
-
+      
       - uses: actions/upload-artifact@v4
         with:
           name: Aimbot-APK
