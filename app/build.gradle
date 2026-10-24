@@ -28,7 +28,12 @@ android {
     }
 
     androidResources {
-        noCompress 'zip', 'tar', 'gz', 'cs', 'so'
+        noCompress 'zip', 'cs'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
