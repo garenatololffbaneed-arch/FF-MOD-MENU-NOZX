@@ -6,12 +6,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
           
+      - name: Extract Dump
+        run: |
+          cd app/src/main/assets
+          unzip -o dump.zip
+          rm dump.zip
+          
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
           
       - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'
+      
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
       
       - name: Build APK
         run: gradle assembleRelease --no-daemon
