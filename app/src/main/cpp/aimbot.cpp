@@ -5,7 +5,7 @@
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_zamzzz_aimbot_NativeBridge_init(JNIEnv* env, jclass clazz, jstring dumpPath) {
-    LOG("Init Berhasil! Parser siap.");
+    LOG("Init Berhasil! File Dump dibaca.");
 }
 
 extern "C" JNIEXPORT void JNICALL
