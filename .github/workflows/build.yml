@@ -6,12 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
           
-      - name: Extract Dump
-        run: |
-          cd app/src/main/assets
-          unzip -o dump.zip
-          rm dump.zip
-          
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
